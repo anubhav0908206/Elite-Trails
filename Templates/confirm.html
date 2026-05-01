@@ -1,0 +1,128 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Booking Success</title>
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background: #f5f5f5;
+      }
+
+      .success-container {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .success-box {
+        background: #2ecc71;
+        width: 350px;
+        padding: 40px;
+        border-radius: 15px;
+        text-align: center;
+        color: white;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 0.8s ease-in-out;
+      }
+
+      /* Tick Circle */
+      .checkmark-circle {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: white;
+        margin: 0 auto 20px;
+        position: relative;
+      }
+
+      /* Tick */
+      .checkmark {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 25px;
+        height: 50px;
+        border-right: 6px solid #2ecc71;
+        border-bottom: 6px solid #2ecc71;
+        transform: translate(-50%, -60%) rotate(45deg) scale(0);
+        animation: tickAnim 0.5s ease forwards 0.5s;
+      }
+
+      /* Animations */
+      @keyframes tickAnim {
+        0% {
+          transform: translate(-50%, -60%) rotate(45deg) scale(0);
+          opacity: 0;
+        }
+        100% {
+          transform: translate(-50%, -60%) rotate(45deg) scale(1);
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .username {
+        font-size: 20px;
+        margin-top: 10px;
+      }
+
+      .back-btn {
+        margin-top: 25px;
+        padding: 10px 20px;
+        border: none;
+        background: white;
+        color: #2ecc71;
+        font-weight: bold;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .back-btn:hover {
+        background: #27ae60;
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="success-container">
+      <div class="success-box">
+        <div class="checkmark-circle">
+          <div class="checkmark"></div>
+        </div>
+
+        <h2>Booking Confirmed!</h2>
+
+        <!-- Django dynamic username -->
+        <div class="username">
+          Thank you, <strong>{{ request.user.first_name }}</strong>
+        </div>
+
+        <button class="back-btn" onclick="goBack()">Back</button>
+      </div>
+    </div>
+
+    <script>
+      function goBack() {
+        window.history.back();
+      }
+    </script>
+  </body>
+</html>

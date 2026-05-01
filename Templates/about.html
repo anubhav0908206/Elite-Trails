@@ -1,0 +1,457 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About | Elite Trails</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      body {
+        background: #f5f7fb;
+        color: #2c3e50;
+      }
+
+      /* NAVBAR */
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 60px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+
+        background: rgba(45, 43, 43, 0.6);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: #dcdcdc;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-links a {
+        margin-left: 20px;
+        text-decoration: none;
+        color: #2c3e50;
+        font-weight: 500;
+        transition: 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: yellow;
+        text-decoration: underline;
+      }
+
+      /* PROFILE */
+      .profile {
+        position: relative;
+        margin-left: 25px;
+      }
+
+      .profile img {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 2px solid #1e88e5;
+      }
+
+      /* DROPDOWN */
+      .dropdown {
+        position: absolute;
+        top: 50px;
+        right: 0;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        padding: 15px;
+        width: 160px;
+        display: none;
+      }
+
+      .dropdown p {
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+
+      .dropdown a {
+        display: block;
+        text-decoration: none;
+        color: #333;
+        padding: 8px 0;
+        transition: 0.3s;
+      }
+
+      .dropdown a:hover {
+        color: #1e88e5;
+      }
+
+      .show-dropdown {
+        display: block;
+      }
+
+      /* LOGIN BUTTON */
+      .login-btn {
+        margin-left: 20px;
+        padding: 8px 18px;
+        background: #1e88e5;
+        color: #fff;
+        border-radius: 20px;
+      }
+
+      /* HERO */
+      .hero {
+        height: 60vh;
+        background: url("{% static 'Assets/kerala.png' %}") center/cover
+          no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+      }
+
+      .hero h1 {
+        position: relative;
+        color: #fff;
+        font-size: 48px;
+      }
+
+      /* ABOUT */
+      .about {
+        padding: 60px 80px;
+        display: flex;
+        gap: 40px;
+        align-items: center;
+      }
+
+      .about img {
+        width: 50%;
+        border-radius: 15px;
+      }
+
+      .about-text {
+        width: 80%;
+        font-size: 30px;
+      }
+
+      .about-text h2 {
+        color: #2c3e50;
+        margin-bottom: 20px;
+      }
+
+      /* FEATURES */
+      .features {
+        padding: 60px 80px;
+        text-align: center;
+        background: #fff;
+      }
+
+      .feature-box {
+        display: flex;
+        gap: 20px;
+      }
+
+      .feature {
+        background: #f5f7fb;
+        padding: 30px;
+        border-radius: 12px;
+        width: 30%;
+      }
+
+      /* SERVICES */
+      .services {
+        padding: 60px 80px;
+        text-align: center;
+      }
+
+      .service-container {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+      }
+
+      .service {
+        background: #fff;
+        padding: 25px;
+        border-radius: 12px;
+        width: 280px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /* STATS */
+      .stats {
+        padding: 60px;
+        background: #2c3e50;
+        color: #b1afaf;
+        display: flex;
+        justify-content: space-around;
+        text-align: center;
+      }
+
+      /* TESTIMONIALS */
+      .testimonials {
+        padding: 60px 80px;
+        text-align: center;
+        background: #fff;
+      }
+
+      .testimonial-container {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+      }
+
+      .testimonial {
+        background: #f5f7fb;
+        padding: 25px;
+        border-radius: 12px;
+        width: 300px;
+      }
+
+      /* TEAM */
+      .team {
+        padding: 60px 80px;
+        text-align: center;
+      }
+
+      .team-container {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+      }
+
+      .member {
+        background: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        width: 180px;
+      }
+
+      .member img {
+        width: 20%;
+        border-radius: 10px;
+      }
+
+      .cta-section {
+        width: 100%;
+        background: #2f4356; /* your dark blue */
+        padding: 60px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .cta-section h2 {
+        color: white;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .explore {
+        height: 45px;
+        width: 160px;
+        border: none;
+        background: white;
+        color: #2f4356;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .explore:hover {
+        background: white;
+        text-decoration: underline;
+        transform: translateY(-4px) scale(1.05);
+        box-shadow: 0 12px 30px rgba(6, 48, 78, 0.633);
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <div class="navbar">
+      <div class="logo">Elite Trails</div>
+
+      <div class="nav-links">
+        <a href="/explore">Home</a>
+        <a href="#">About</a>
+        <a href="/category">Category</a>
+        <a href="/form">Help</a>
+
+        {% if user.is_authenticated %}
+        <div class="profile">
+          <img src="{% static 'Assets/profile.png' %}" id="profileBtn" />
+
+          <div class="dropdown" id="dropdownMenu">
+            <p>{{ user.username }}</p>
+            <a href="/login">Logout</a>
+          </div>
+        </div>
+        {% else %}
+        <a href="/login" class="login-btn">Login</a>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero">
+      <h1>Discover the World with Elite Trails</h1>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="about">
+      <img src="{% static 'Assets/ganga.png' %}" />
+      <div class="about-text">
+        <h2>Who We Are</h2>
+        <p>Elite Trails creates unforgettable travel experiences worldwide.</p>
+        <p>We blend luxury, adventure, and comfort.</p>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features">
+      <h2>Why Choose Us</h2>
+      <div class="feature-box">
+        <div class="feature">
+          <h3>Custom Packages</h3>
+        </div>
+        <div class="feature">
+          <h3>Expert Guides</h3>
+        </div>
+        <div class="feature">
+          <h3>24/7 Support</h3>
+        </div>
+        <div class="feature">
+          <h3>Efficient Cost</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services">
+      <h2>Services</h2>
+      <div class="service-container">
+        <div class="service">
+          <h3>Tour Packages</h3>
+        </div>
+        <div class="service">
+          <h3>Hotel Booking</h3>
+        </div>
+        <div class="service">
+          <h3>Adventure Trips</h3>
+        </div>
+        <div class="service">
+          <h3>Cab Service</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats">
+      <div>
+        <h3>500+</h3>
+        <p>Trips</p>
+      </div>
+      <div>
+        <h3>300+</h3>
+        <p>Clients</p>
+      </div>
+      <div>
+        <h3>50+</h3>
+        <p>Destinations</p>
+      </div>
+      <div>
+        <h3>50+</h3>
+        <p>Agents</p>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials">
+      <h2>Happy Customers</h2>
+      <div class="testimonial-container">
+        <div class="testimonial">
+          <p>"Amazing!"</p>
+          <h4>Akriti Singh</h4>
+        </div>
+        <div class="testimonial">
+          <p>"Best agency"</p>
+          <h4>Aditee Singh</h4>
+        </div>
+        <div class="testimonial">
+          <p>"Loved it"</p>
+          <h4>Amar Sharma</h4>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="team">
+      <h2>Our Team</h2>
+      <div class="team-container">
+        <div class="member">
+          <img src="{% static 'Assets/userr.png' %}" />
+          <h4>Founder</h4>
+          <p>Anubhav</p>
+        </div>
+        <div class="member">
+          <img src="{% static 'Assets/userr.png' %}" />
+          <h4>Designer</h4>
+          <p></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <h2>Start Your Journey</h2>
+      <a href="/category" class="explore">Explore Now</a>
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+      const profileBtn = document.getElementById("profileBtn");
+      const dropdown = document.getElementById("dropdownMenu");
+
+      if (profileBtn) {
+        profileBtn.addEventListener("click", () => {
+          dropdown.classList.toggle("show-dropdown");
+        });
+
+        window.addEventListener("click", (e) => {
+          if (!profileBtn.contains(e.target) && !dropdown.contains(e.target)) {
+            dropdown.classList.remove("show-dropdown");
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,307 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Elite Trails</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #0b0f19;
+  color: white;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
+
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+}
+
+.nav-links a {
+  margin: 0 15px;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.nav-links a:hover {
+  color: gold;
+}
+
+/* PROFILE */
+.profile {
+  position: relative;
+}
+.profile img {
+  width: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* DROPDOWN */
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: 45px;
+  background: rgba(31, 41, 55, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 12px;
+  border-radius: 10px;
+  width: 160px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.dropdown p {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.dropdown a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  margin-top: 8px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  background: url("{% static 'Assets/land.png' %}") center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 60px;
+}
+
+.hero h1 {
+  font-size: 48px;
+  max-width: 600px;
+}
+.hero p {
+  margin: 15px 0;
+  color: #ccc;
+}
+
+/* BUTTON */
+.btn {
+  background: gold;
+  border: none;
+  padding: 12px 25px;
+  margin-right: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn:hover {
+  background: orange;
+}
+
+/* SEARCH */
+.search-box {
+  margin-top: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  gap: 10px;
+  backdrop-filter: blur(10px);
+  max-width: 700px;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+
+/* SERVICES */
+.services {
+  padding: 80px 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 25px;
+  border-radius: 15px;
+  transition: 0.3s;
+  text-align: center; /* centers everything */
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card h3 {
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.card img {
+  width: 420px;          /* consistent size */
+  height: 250px;
+  object-fit:fill;  /* prevents distortion */
+  margin-bottom: 15px;  /* space below image */
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .hero {
+    padding: 0 20px;
+  }
+  .hero h1 {
+    font-size: 32px;
+  }
+  .navbar {
+    padding: 10px 20px;
+  }
+}
+.custom {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+}
+.cab {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+
+  <div class="logo">
+    <img src="{% static 'Assets/mountain.png' %}" alt="logo">
+    <h2>Elite Trails</h2>
+  </div>
+
+  <div class="nav-links">
+    <a href="/explore">Home</a>
+    <a href="/about">About</a>
+    <a href="#">Category</a>
+    <a href="/form">Help</a>
+  </div>
+
+  <div class="profile">
+    <img src="{% static 'Assets/profile.png' %}" id="profileIcon" />
+
+    <div id="dropdown" class="dropdown hidden">
+      {% if user.is_authenticated %}
+      <p>{{ user.username }}</p>
+      <a href="/login">Logout</a>
+      {% else %}
+      <a href="/login">Login</a>
+      {% endif %}
+    </div>
+  </div>
+
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Crafting Seamless Travel Experiences</h1>
+  <p>Book cabs, hotels, and trips in one place</p>
+
+  <div>
+    <button class="btn">Explore Services</button>
+  </div>
+
+  <!-- <div class="search-box">
+    <input type="text" placeholder="Where to?" />
+    <input type="date" />
+    <input type="date" />
+    <button class="btn">Search</button>
+  </div> -->
+</section>
+
+<!-- SERVICES -->
+<section class="services">
+
+  <div class="card">
+    <img src="{% static 'Assets/custom.png' %}" />
+    <a href="/custom" class="custom">Custom Tour</a>
+    <p>Personalized travel plans tailored to you</p>
+  </div>
+
+  <div class="card">
+    <img src="{% static 'Assets/cab.png' %}" />
+    <a href="/cab" class="custom">Cab Booking</a>
+    <p>Safe and reliable rides anytime</p>
+  </div>
+
+  <div class="card">
+    <img src="{% static 'Assets/hotel.png' %}" />
+    <a href="/hotel" class="custom">Hotel Booking</a>
+    <p>Find the best hotels at great prices</p>
+  </div>
+
+  <div class="card">
+    <img src="{% static 'Assets/adventure.png' %}" />
+    <a href="/adventure" class="custom">Adventure Trip</a>
+    <p>Explore thrilling destinations worldwide</p>
+  </div>
+
+</section>
+
+<!-- JS -->
+<script>
+const icon = document.getElementById("profileIcon");
+const dropdown = document.getElementById("dropdown");
+
+icon.addEventListener("click", (e) => {
+  e.stopPropagation();
+  dropdown.classList.toggle("hidden");
+});
+
+document.addEventListener("click", () => {
+  dropdown.classList.add("hidden");
+});
+</script>
+
+</body>
+</html>

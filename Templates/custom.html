@@ -1,0 +1,202 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>24×7 Help Support</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: url("{% static 'Assets/explore.png' %}") center/cover
+        no-repeat;
+        color: #fff;
+      }
+
+      form {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 40px 50px;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        width: 380px;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 10px;
+        font-size: 1.8em;
+        color: black;
+      }
+
+      p {
+        text-align: center;
+        font-size: 0.9em;
+        margin-bottom: 20px;
+        color: #ddd;
+      }
+
+      label {
+        display: block;
+        font-weight: 600;
+        margin-top: 12px;
+        margin-bottom: 5px;
+        font-size: 0.9em;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 8px;
+        background-color: rgba(255, 255, 255, 0.9);
+        font-size: 1em;
+        color: #000;
+        outline: none;
+        transition: box-shadow 0.3s ease;
+      }
+
+      textarea {
+        resize: none;
+        height: 100px;
+      }
+
+      input:focus,
+      textarea:focus {
+        box-shadow: 0 0 10px #00b7ff;
+      }
+
+      button {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        background-color: #243b55;
+        color: #fff;
+        font-size: 1.1em;
+        font-weight: bold;
+        margin-top: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+        text-align: center;
+        text-decoration: none;
+      }
+
+      /* Hover effect */
+      button:hover {
+        background-color: #1b2c40;
+      }
+
+      @media (max-width: 480px) {
+        form {
+          width: 90%;
+          padding: 30px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <form method="post">
+      {% csrf_token %}
+
+      <h2>Your saefty our responsibility</h2>
+      <p>
+        We’re here to make your trip best and memoriable with our adventure trip
+        with your friends
+      </p>
+
+      <label for="name">Name</label>
+      <input type="text" name="name" placeholder="Enter your name" required />
+
+      <label for="email">Email</label>
+      <input
+        type="email"
+        name="email"
+        placeholder="Enter your email"
+        required
+      />
+
+      <label for="contact">Contact</label>
+      <input
+        type="text"
+        name="contact"
+        placeholder="Enter your contact number"
+        required
+      />
+
+      <label for="emergency">Emergency contact</label>
+      <input
+        type="text"
+        name="emergency"
+        placeholder="Enter your emergency contact number"
+        required
+      />
+
+      <label for="location">Location</label>
+      <input
+        type="text"
+        name="location"
+        placeholder="Enter your prefered location number"
+        required
+      />
+
+      <label for="date">Date of visiting</label>
+      <input type="date" name="date" />
+
+      <label for="message">Number of persons</label>
+      <input
+        type="text"
+        name="person"
+        placeholder="Enter No of persons"
+        required
+      />
+
+      <label for="message">Destination</label>
+      <textarea
+        name="destination"
+        placeholder="Enter your choice"
+        required
+      ></textarea>
+
+      <label for="message">Budget</label>
+      <input
+        type="text"
+        name="budget"
+        placeholder="Enter your budget"
+        required
+      />
+
+      <label for="message">Travel Prefrence</label>
+      <input
+        type="text"
+        name="travel"
+        placeholder="Enter your travel prefrence"
+        required
+      />
+
+      <label for="message">Activities Intrested</label>
+      <textarea
+        name="activities"
+        placeholder="Enter your choice (sightseeing/treking/nightlife etc)"
+        required
+      ></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>

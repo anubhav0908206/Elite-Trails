@@ -1,0 +1,180 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>24×7 Help Support</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: url("{% static 'Assets/cab.png' %}") center/cover no-repeat;
+        color: #fff;
+      }
+
+      form {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 40px 50px;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        width: 380px;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 10px;
+        font-size: 1.8em;
+        color: black;
+      }
+
+      p {
+        text-align: center;
+        font-size: 0.9em;
+        margin-bottom: 20px;
+        color: #ddd;
+      }
+
+      label {
+        display: block;
+        font-weight: 600;
+        margin-top: 12px;
+        margin-bottom: 5px;
+        font-size: 0.9em;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 8px;
+        background-color: rgba(255, 255, 255, 0.9);
+        font-size: 1em;
+        color: #000;
+        outline: none;
+        transition: box-shadow 0.3s ease;
+      }
+
+      textarea {
+        resize: none;
+        height: 100px;
+      }
+
+      input:focus,
+      textarea:focus {
+        box-shadow: 0 0 10px #00b7ff;
+      }
+
+      button {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        background-color: #243b55;
+        color: #fff;
+        font-size: 1.1em;
+        font-weight: bold;
+        margin-top: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+        text-align: center;
+        text-decoration: none;
+      }
+
+      /* Hover effect */
+      button:hover {
+        background-color: #1b2c40;
+      }
+
+      button:hover {
+        transform: scale(1.05);
+        box-shadow:
+          0 0 15px #00b7ff,
+          0 0 45px #00b7ff;
+      }
+
+      @media (max-width: 480px) {
+        form {
+          width: 90%;
+          padding: 30px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <form method="post">
+      {% csrf_token %}
+
+      <h2>12 hours cab service</h2>
+      <p>We’re here to make your journey a safest journey</p>
+
+      <label for="name">Name</label>
+      <input type="text" name="name" placeholder="Enter your name" required />
+
+      <label for="email">Email</label>
+      <input
+        type="email"
+        name="email"
+        placeholder="Enter your email"
+        required
+      />
+
+      <label for="contact">Contact</label>
+      <input
+        type="text"
+        name="contact"
+        placeholder="Enter your contact number"
+        required
+      />
+
+      <label for="message">Pickup location</label>
+      <input
+        type="text"
+        name="pickup"
+        placeholder="Enter your current location"
+        required
+      />
+
+      <label for="message">Drop location</label>
+      <input
+        type="text"
+        name="drop"
+        placeholder="Enter your drop location"
+        required
+      />
+
+      <label for="message">Number of passenger</label>
+      <input
+        type="text"
+        name="passenger"
+        placeholder="Enter No of passenger"
+        required
+      />
+
+      <label for="message">Luggage count</label>
+      <input
+        type="text"
+        name="luggage"
+        placeholder="Enter No of luggage bags you have"
+        required
+      />
+
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>

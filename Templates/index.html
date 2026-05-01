@@ -1,0 +1,155 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elite Travels</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        font-family: "Smooch Sans", sans-serif;
+        background: url("{% static 'assets/index.png' %}") no-repeat center
+          center/cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      body::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.55);
+        backdrop-filter: blur(3px);
+      }
+
+      .main {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        color: #fff;
+        padding: 40px;
+        border-radius: 18px;
+      }
+
+      /* Fade In Animation */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .title,
+      .tagline,
+      .estd,
+      .location,
+      .btn {
+        opacity: 0;
+        animation: fadeInUp 1.2s ease forwards;
+      }
+
+      .title {
+        font-family: "Urbanist", sans-serif;
+        font-size: 110px;
+        font-weight: 800;
+        letter-spacing: 4px;
+        margin-bottom: 15px;
+        text-shadow: 0 6px 25px rgba(0, 0, 0, 0.9);
+        animation-delay: 0.2s;
+      }
+
+      .tagline {
+        font-family: "IBM Plex Sans", sans-serif;
+        font-size: 38px;
+        margin-bottom: 20px;
+        font-weight: 500;
+        opacity: 0;
+        animation-delay: 0.6s;
+      }
+
+      .estd {
+        font-size: 28px;
+        margin-bottom: 8px;
+        letter-spacing: 2px;
+        animation-delay: 1s;
+      }
+
+      .location {
+        font-size: 28px;
+        margin-bottom: 35px;
+        opacity: 0;
+        animation-delay: 1.4s;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 16px 48px;
+        font-size: 26px;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 50px;
+        background: rgba(119, 0, 255, 0.818);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+        transition: all 0.35s ease;
+        animation-delay: 1.8s;
+      }
+
+      .btn:hover {
+        transform: translateY(-4px) scale(1.05);
+        box-shadow: 0 12px 30px rgba(53, 4, 110, 0.927);
+      }
+
+      @media (max-width: 768px) {
+        .title {
+          font-size: 60px;
+        }
+
+        .tagline {
+          font-size: 24px;
+        }
+
+        .estd,
+        .location {
+          font-size: 20px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="main">
+      <div class="title">ELITE TRAILS</div>
+
+      <div class="tagline">Travel with us and make memories</div>
+
+      <div class="estd">ESTD: 2026</div>
+
+      <div class="location"></div>
+
+      <a href="/login" class="btn">Explore</a>
+    </div>
+  </body>
+</html>

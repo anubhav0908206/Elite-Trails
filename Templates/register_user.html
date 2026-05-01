@@ -1,0 +1,170 @@
+{%load static%}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Background */
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: url("{% static 'Assets/login.png' %}") center/cover
+          no-repeat;
+        position: relative;
+      }
+
+      /* overlay */
+      body::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+      }
+
+      /* header */
+      .header {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 10vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 30px;
+        backdrop-filter: blur(5px);
+        z-index: 2;
+      }
+
+      /* logo */
+      .logo {
+        height: 35px;
+        margin: 0 10px;
+      }
+
+      /* main container */
+      .container {
+        position: relative;
+        z-index: 2;
+        width: 450px;
+        padding: 30px;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(10px);
+        color: white;
+        text-align: center;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+      }
+
+      .container h2 {
+        margin-bottom: 10px;
+      }
+
+      /* messages */
+      h5 {
+        color: red;
+        font-size: 14px;
+        margin: 5px 0;
+      }
+
+      /* input group */
+      .input-group {
+        text-align: left;
+        margin: 12px 0;
+        font-size: 14px;
+      }
+
+      .input-group input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: none;
+        border-radius: 6px;
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+      }
+
+      /* button */
+      .btn {
+        margin-top: 15px;
+        width: 100%;
+        height: 45px;
+        border: none;
+        border-radius: 8px;
+        background: linear-gradient(to right, #1f1c2c, #928dab);
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .btn:hover {
+        background: #00b7ff;
+        box-shadow:
+          0 0 15px #00b7ff,
+          0 0 40px #00b7ff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <div class="header">
+      <img src="{%static 'assets/travel.png'%}" class="logo" />
+      ELITE TRAVEL
+      <img src="{%static 'assets/travel.png'%}" class="logo" />
+    </div>
+
+    <!-- Form -->
+    <div class="container">
+      <h2>WELCOME TO ELITE TRAVEL!</h2>
+
+      {% for M in messages %}
+      <h5>{{ M }}</h5>
+      {% endfor %}
+
+      <form method="post">
+        {% csrf_token %}
+
+        <div class="input-group">
+          <label>Username</label>
+          <input type="text" name="username" placeholder="Enter username" />
+        </div>
+
+        <div class="input-group">
+          <label>New Password</label>
+          <input type="password" name="password" placeholder="New password" />
+        </div>
+
+        <div class="input-group">
+          <label>Confirm Password</label>
+          <input
+            type="password"
+            name="cpassword"
+            placeholder="Confirm password"
+          />
+        </div>
+
+        <div class="input-group">
+          <label>Email</label>
+          <input type="email" name="email" placeholder="Enter email" />
+        </div>
+
+        <button type="submit" class="btn">CREATE ACCOUNT</button>
+      </form>
+    </div>
+  </body>
+</html>
